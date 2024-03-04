@@ -125,7 +125,7 @@ if __name__ == "__main__":
     ms2 = ms1.union(MultiSet([4,5]))    # ms2 = { 1,    2, 2, 3, 3, 4, 4, 5 }
     ms2.remove(2)                       # ms2 = { 1,    2,    3, 3, 4, 4, 5 }
     ms3 = ms1.intersection(ms2)         # ms3 = { 1,    2,    3, 3, 4       }
-    ms1.difference(ms3)                 # ms1 = {       2                   }
+    ms1 = ms1.difference(ms3)                 # ms1 = {       2                   }
     print(ms1.membership_test(2))       # True
     print(ms1.membership_test(5))       # False
     
