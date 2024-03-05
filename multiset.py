@@ -13,7 +13,7 @@ class MultiSet(object):
         """
         choose a representation
         """
-        pass
+        self.elementi=elems.sort()
 
     def add(self, e):
         """
@@ -29,7 +29,7 @@ class MultiSet(object):
         None.
 
         """
-        pass
+        self.elementi.append(e).sort()
 
     def remove(self, e):
         """
@@ -45,7 +45,7 @@ class MultiSet(object):
         None.
 
         """
-        pass
+        self.elementi.remove(e)
 
     def membership_test(self, e):
         """
@@ -62,7 +62,14 @@ class MultiSet(object):
             if element e has multiplicity > 1
 
         """
-        pass
+        conto=0
+        for el in self.elementi:
+            if el=e:
+                conto+=1
+        if conto>1:
+            return True
+        else:
+            return False
 
     def union(self, ms):
         """
