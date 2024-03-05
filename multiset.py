@@ -13,7 +13,7 @@ class MultiSet(object):
         """
         choose a representation
         """
-        pass
+        self.elementi = elems
 
     def add(self, e):
         """
@@ -29,7 +29,7 @@ class MultiSet(object):
         None.
 
         """
-        pass
+        self.elementi.append(e)
 
     def remove(self, e):
         """
