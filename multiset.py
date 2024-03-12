@@ -4,7 +4,7 @@ Created Nov 2, 2020
 Updated Feb 7, 2024
 by Giulio Iannello
 """
-from copy import deepcopy
+from copy import deepcopy, copy
 
 
 class MultiSet(object):
@@ -13,6 +13,10 @@ class MultiSet(object):
         """
         choose a representation
         """
+        #ordinare la lista con sort()
+        self.list=elems
+        self.list.sort()
+     
         pass
 
     def add(self, e):
@@ -29,6 +33,11 @@ class MultiSet(object):
         None.
 
         """
+        
+        self.list.append(e)
+        self.list.sort()
+        #self.list=self.list.append(e)
+
         pass
 
     def remove(self, e):
@@ -45,7 +54,10 @@ class MultiSet(object):
         None.
 
         """
+        self.list.remove(e)
+
         pass
+    
 
     def membership_test(self, e):
         """
@@ -62,6 +74,14 @@ class MultiSet(object):
             if element e has multiplicity > 1
 
         """
+        
+        memb=self.list.count(e)
+        if memb >= 1:
+            return True
+        else:
+            return False
+
+     
         pass
 
     def union(self, ms):
@@ -79,6 +99,15 @@ class MultiSet(object):
         new_ms : Multiset
             the union between the object and ms
         """
+       
+        union= copy(self.list)
+        for el in ms.list:
+            union.append(el)
+            
+        union.sort()
+        
+        return MultiSet(union)
+        
         pass
 
     def intersection(self, ms):
@@ -96,6 +125,17 @@ class MultiSet(object):
         new_ms : Multiset
             the intersection between the object and ms
         """
+        intersection=[]
+        ms_copy=deepcopy(ms)
+        for element in self.list:
+            if element in ms_copy.list:
+                intersection.append(element)
+                ms_copy.list.remove(element)
+        
+        intersection.sort()
+                        
+        return MultiSet(intersection)
+    
         pass
 
     def difference(self,ms):
@@ -113,6 +153,17 @@ class MultiSet(object):
         new_ms : Multiset
             the difference between the object and ms
         """
+        
+        diff=[]
+        ms_copy=deepcopy(ms)
+        for element in self.list:
+            if element not in ms_copy.list:
+                diff.append(element)
+            else:
+                ms_copy.list.remove(element)
+                
+        diff.sort()                                
+        return MultiSet(diff)
         pass
 
 
